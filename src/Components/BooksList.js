@@ -4,9 +4,23 @@ import BookDataService from "../Services/bookServices";
 
 const BooksList = ({ getBookId }) => {
   const [books, setBooks] = useState([]);
+// const { bookList = [] } = useSelector(
+//   // @ts-ignore
+//   ({ bookReducer }) => bookReducer,
+// );
+
+// const dispatch = useDispatch();
+
   useEffect(() => {
     getBooks();
   }, []);
+
+
+  // useEffect(()=>{
+  //   if(isEmpty(bookList)){
+  //     dispatch(BookDataService.getAllBooks())
+  //   }
+  // },[]);
 
   const getBooks = async () => {
     const data = await BookDataService.getAllBooks();
@@ -26,7 +40,6 @@ const BooksList = ({ getBookId }) => {
         </Button>
       </div>
 
-      {/* <pre>{JSON.stringify(books, undefined, 2)}</pre>} */}
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
@@ -41,7 +54,7 @@ const BooksList = ({ getBookId }) => {
           </tr>
         </thead>
         <tbody>
-          {books.map((doc, index) => {
+          {books && books.map((doc, index) => {
             return (
               <tr key={doc.id}>
                 <td>{index + 1}</td>
@@ -76,4 +89,7 @@ const BooksList = ({ getBookId }) => {
   );
 };
 
-export default BooksList;
+
+
+
+export default  BooksList;
