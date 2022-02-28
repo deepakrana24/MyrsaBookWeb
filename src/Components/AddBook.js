@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addBook,updateBook } from "../Store/actions/bookActions";
 import { Form, Alert, InputGroup, Button, ButtonGroup } from "react-bootstrap";
 import BookDataService from "../Services/bookServices";
 
 const AddBook = ({ id, setBookId }) => {
+  const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [edition, setEdition] = useState('');
@@ -26,17 +29,18 @@ const AddBook = ({ id, setBookId }) => {
       edition,
       isbn,
       publisher,
-
     };
     console.log(newBook);
 
     try {
       if (id !== undefined && id !== "") {
-        await BookDataService.updateBook(id, newBook);
+       // await BookDataService.updateBook(id, newBook);
+       dispatch(updateBook(id, newBook));
         setBookId("");
         setMessage({ error: false, msg: "Updated successfully!" });
       } else {
-        await BookDataService.addBooks(newBook);
+       // await BookDataService.addBooks(newBook);
+       dispatch(addBook(newBook))
         setMessage({ error: false, msg: "New Book added successfully!" });
       }
     } catch (err) {
