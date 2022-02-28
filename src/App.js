@@ -8,14 +8,14 @@ function App() {
   const [bookId, setBookId] = useState("");
 
   const getBookIdHandler = (id) => {
-    console.log("The ID of document to be edited: ", id);
+    
     setBookId(id);
   };
   return (
     <>
       <Navbar bg="dark" variant="dark" className="header">
         <Container>
-          <Navbar.Brand href="#home"> MYRSA  </Navbar.Brand>
+          <Navbar.Brand href="#home"> MYRSA CMS </Navbar.Brand>
         </Container>
       </Navbar>
       <Container style={{ width: "400px" }}>

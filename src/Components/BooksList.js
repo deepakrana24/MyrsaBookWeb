@@ -24,7 +24,7 @@ const BooksList = ({ getBookId }) => {
 
   const getBooks = async () => {
     const data = await BookDataService.getAllBooks();
-    console.log( "this is thee e date" ,data.docs);
+    console.log( "this is the  date" ,data.docs);
     setBooks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
 
