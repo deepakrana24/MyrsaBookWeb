@@ -19,7 +19,7 @@ export const getBooks = () => async(dispatch)=> {
     })
 }
 
-export const addBook = (newBook)=> async (dispatch)=>{
+export const addBook = (newBook)=> async(dispatch)=>{
     await BookDataService.addBooks(newBook);
     const data = await BookDataService.getAllBooks();
     let book = (data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
